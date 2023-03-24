@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+	
+<html>
+	<head>
+        <meta charset="UTF-8"/>
+	</head>
+	<body>
+<h3>20 занятие - домашка, "Калькулятор"</h3><!-- 20 урок -->
+<input id="elem20" type="text"/> =<!-- создаем импут поле ввода -->
+<input id="rezult20" type="text"  placeholder="Результат"><hr/><!-- создаем импут поле ввода -->
+<input class="batton20" type="submit"value="0"> <!-- Создаем инпут с конпкой -->
+<input class="batton20" type="submit"value="1"> <!-- Создаем инпут с конпкой -->
+<input class="batton20" type="submit"value="2"> <!-- Создаем инпут с конпкой -->
+<input class="batton20" type="submit"value="3"> <!-- Создаем инпут с конпкой -->
+<input class="batton20" type="submit"value="4"> <!-- Создаем инпут с конпкой -->
+<input class="batton20" type="submit"value="5"> <!-- Создаем инпут с конпкой -->
+<input class="batton20" type="submit"value="6"> <!-- Создаем инпут с конпкой -->
+<input class="batton20" type="submit"value="7"> <!-- Создаем инпут с конпкой -->
+<input class="batton20" type="submit"value="8"> <!-- Создаем инпут с конпкой -->
+<input class="batton20" type="submit"value="9"> <!-- Создаем инпут с конпкой -->
+<input class="batton20" type="submit"value=" + "> <!-- Создаем инпут с конпкой -->
+<input class="batton20" type="submit"value=" - "> <!-- Создаем инпут с конпкой -->
+<input class="batton20" type="submit"value=" * "> <!-- Создаем инпут с конпкой -->
+<input class="batton20" type="submit"value=" / "> <!-- Создаем инпут с конпкой -->
+<input id="button20_rez" type="submit"value="Равно"> <!-- Создаем инпут с конпкой -->
+	<script  type="text/javascript">
+let button20 =document.querySelector ('#button20_rez'); //переменная  от тега кнопки
+let elem20 =document.querySelector ('#elem20');//переменная  от тега области ввода
+let rezult20 =document.querySelector ('#rezult20');//переменная  от тега области ввода
+
+
+let elements20 = document.querySelectorAll ('.batton20');//получаем группу элементов из класса тегов, запишется в массив
+for (let elem of elements20) {//цикл перебираем массив
+	elem.addEventListener('click', func);//применяем метод событий с функцией 
+}
+function func() {//функция исполняет каждый элемент отдельно
+	elem20.value += this.value//передаем в значение области ввода значение нажатой кнопки
+}
+
+document.addEventListener('keydown', function(event) {//используем объект event для получения кнопок 
+
+	if (event.keyCode == 97 || event.keyCode == 49)//нажат 1
+	{
+	elem20.value += '1'//передаем строку в область ввода
+	}
+	if (event.keyCode == 98 || event.keyCode == 50 )//нажат 2
+	{
+	elem20.value += '2'//передаем строку в область ввода
+	}	
+	if(event.keyCode == 99  || event.keyCode == 51)//нажат 3
+	{
+	elem20.value += '3'//передаем строку в область ввода
+	}
+	if (event.keyCode == 100  || event.keyCode == 52)//нажат 4
+	{
+	elem20.value += '4'//передаем строку в область ввода
+	}
+	if(event.keyCode == 101 || event.keyCode == 53)//нажат 5
+	{
+	elem20.value += '5'//передаем строку в область ввода
+	}	
+	if(event.keyCode == 102 || event.keyCode == 54 )//нажат 6
+	{
+	elem20.value += '6'//передаем строку в область ввода
+	}	
+	if(event.keyCode == 103  || event.keyCode == 55)//нажат 7
+	{
+	elem20.value += '7'//передаем строку в область ввода
+	}	
+	if(event.keyCode == 104 || event.keyCode == 56)//нажат 8
+	{
+	elem20.value += '8'//передаем строку в область ввода
+	}	
+	if(event.keyCode == 105 || event.keyCode == 57)//нажат 9
+	{
+	elem20.value += '9'//передаем строку в область ввода
+	}	
+	if(event.keyCode == 96 || event.keyCode == 48)//нажат 0
+	{
+	elem20.value += '0'//передаем строку в область ввода
+	}	
+	 if(event.keyCode == 106 || event.shiftKey && event.keyCode === 56)//нажат *
+	{
+	elem20.value += ' * '//передаем строку в область ввода
+	}	
+	if(event.keyCode == 111 || event.shiftKey && event.keyCode === 220)//нажат /
+	{
+	elem20.value += ' / '//передаем строку в область ввода
+	}	
+	if(event.keyCode == 107 || event.shiftKey && event.keyCode === 187 ||  event.keyCode === 191)//нажат +
+	{
+	elem20.value += ' + '//передаем строку в область ввода
+	}	
+	 if(event.keyCode == 109 || event.keyCode == 189  )//нажат -
+	{
+	elem20.value += ' - '//передаем строку в область ввода
+	}	
+})
+
+
+document.addEventListener('keydown', function(event) {
+if(event.keyCode == 187 || event.keyCode == 13  ) //если нажата =
+	{
+	 func20()
+	}	
+})
+
+button20.addEventListener ('click',  func20)
+function  func20(){//при нажатии кнопки "равно" отработает событие с функцией
+let arr = (elem20.value).split(' '); //разбиваем строку в массив по указанному разделителю
+console.log(arr);//вывод в консоль
+let r = Number (arr[0] )//указываем начальный элемент для перебора массива
+for (let i = 0; i <= arr.length-1; i++)//цикл для перебора массива
+{
+	if (arr[i] == '+')//если в массиве встретиться строка +
+	{
+		r +=  Number (arr[i+1])//к переменной r - результат сложится следующий элемент
+	}
+	if (arr[i] == '-')//если в массиве встретиться строка -
+	{
+		r -=  Number (arr[i+1])//у переменной r - результат вычетут следующий элемент
+	}
+	if (arr[i] == '*')//если в массиве встретиться строка *
+	{
+		r *=  Number (arr[i+1])//r - результат перемножат на следующий элемент
+	}
+	if (arr[i] == '/')//если в массиве встретиться строка /
+	{
+		r /=  Number (arr[i+1])//r - результат разделят на следующий элемент
+	}
+}
+console.log(r);//выведем в консоль результат
+rezult20.value = r; //присвоим обласи выода значение с переменной r - результат 
+if (rezult20.value == 'NaN')//если в обласи вывода - результат не число то,
+{
+ alert("Введено неверное выражение. Введите выражение формата 'Number'");//на экран выдать сообщение
+}
+}
+	</script>
+
+	</body>
+</html>
